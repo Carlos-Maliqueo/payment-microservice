@@ -1,4 +1,4 @@
-# 💳 Payment Microservice
+# Payment Microservice
 
 > A production-grade payment processing microservice built with **FastAPI**, **Event Sourcing**, **CQRS**, and **idempotency guarantees**.
 
@@ -7,7 +7,7 @@
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                   API Layer (FastAPI)                     │
@@ -31,7 +31,7 @@
        └─────────────┘     └──────────────┘
 ```
 
-## ✨ Key Design Patterns
+## Key Design Patterns
 
 | Pattern | Implementation | Why |
 |---|---|---|
@@ -40,7 +40,7 @@
 | **Idempotency** | Redis distributed lock + cache | Safe retries, no duplicate payments |
 | **Repository** | `PaymentRepository` | Testable, decoupled data access |
 
-## 🚀 Quick Start
+## Quick Start
 ```bash
 git clone https://github.com/Carlos-Maliqueo/payment-microservice
 cd payment-microservice
@@ -50,7 +50,7 @@ docker-compose up --build
 API docs: **http://localhost:8000/docs**
 RabbitMQ UI: **http://localhost:15672** (guest/guest)
 
-## 📡 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |---|---|---|
@@ -62,7 +62,7 @@ RabbitMQ UI: **http://localhost:15672** (guest/guest)
 | POST | `/api/v1/payments/{id}/cancel` | Cancel a payment |
 | GET | `/api/v1/payments/{id}/history` | Full event history |
 
-## 🔒 Idempotency Flow
+## Idempotency Flow
 ```
 Client sends POST /payments (idempotency_key: "order-123")
     │
@@ -77,13 +77,13 @@ Client sends POST /payments (idempotency_key: "order-123")
     └─► Cache response in Redis (TTL: 24h) ✅
 ```
 
-## 🧪 Running Tests
+## Running Tests
 ```bash
 pip install -r requirements.txt
 pytest tests/ -v
 ```
 
-## 📁 Project Structure
+## Project Structure
 ```
 app/
 ├── api/v1/endpoints/    # FastAPI route handlers
@@ -99,7 +99,7 @@ app/
 └── events/              # RabbitMQ publisher
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **FastAPI** — Async REST API
 - **PostgreSQL + SQLAlchemy 2.0** — Async ORM
